@@ -1,0 +1,2 @@
+npx webpack
+npx webpack --stats detailed
