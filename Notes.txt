@@ -1,2 +1,9 @@
 npx webpack
 npx webpack --stats detailed
+
+4 types of Asset Modules
+    1. asset/resource (large image, fonts)
+    2. asset/inline (small images like svgs) - Inlines a file as a data uri. Doesn't generate a new file, instead generates a base64 representation 
+    3. asset (combination of previous types) (inline if less than 8KB, else resource)
+    4. asset/source (plain text data, injects as strings)
+
