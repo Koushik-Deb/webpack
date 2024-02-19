@@ -7,3 +7,5 @@ npx webpack --stats detailed
     3. asset (combination of previous types) (inline if less than 8KB, else resource)
     4. asset/source (plain text data, injects as strings)
 
+publicPath - Static files path not needed from webpack 5!
+You will still need it, if you take your static files from cdn . 
