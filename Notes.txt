@@ -12,3 +12,16 @@ You will still need it, if you take your static files from cdn .
 
 
 Loaders
+
+Latest JS features with BABEL ( Not Needed anymore)
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/env"],
+            plugins: ["@babel/plugin-proposal-class-properties"],
+          },
+        },
+      },
