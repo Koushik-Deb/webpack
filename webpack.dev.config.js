@@ -10,6 +10,17 @@ module.exports = {
     publicPath: "",
   },
   mode: "development", // "production" | "development" | "none"
+  devServer: {
+    port: 9000,
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    devMiddleware: {
+      index: "index.html",
+      writeToDisk: true,
+    },
+  },
+
   module: {
     rules: [
       {
