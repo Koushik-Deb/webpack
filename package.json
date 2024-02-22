@@ -30,6 +30,7 @@
     "webpack-dev-server": "^5.0.2"
   },
   "dependencies": {
-    "loadash": "^1.0.0"
+    "loadash": "^1.0.0",
+    "react": "^18.2.0"
   }
 }
