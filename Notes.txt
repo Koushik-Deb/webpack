@@ -25,3 +25,13 @@ Latest JS features with BABEL ( Not Needed anymore)
           },
         },
       },
+
+
+plugins
+
+Plugins are additional JavaScript libraries that do everything that loaders cannot do.
+Can modify how the bundles themselves are created. Like, uglifyJSPlugin takes the bundles.js and minimizes then contents to decrease the bundle Size
+
+plugins: [
+    new PluginName()
+]
