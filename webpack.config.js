@@ -9,6 +9,10 @@ module.exports = {
     filename: "bundle.[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     publicPath: "dist/",
+    clean: {
+      keep: /\.css/,
+      dry: true,
+    },
   },
   mode: "none",
   module: {
@@ -49,11 +53,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "styles.[contenthash].css",
     }),
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        "**/*",
-        path.join(process.cwd(), "build/**/*"),
-      ],
-    }),
+    // new CleanWebpackPlugin({
+    //   cleanOnceBeforeBuildPatterns: [
+    //     "**/*",
+    //     path.join(process.cwd(), "build/**/*"),
+    //   ],
+    // }),
   ],
 };
