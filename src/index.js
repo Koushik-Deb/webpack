@@ -5,4 +5,3 @@ const heading = new Heading();
 heading.render();
 const helloWorldButton = new HelloWorldButton();
 helloWorldButton.render();
-helloWorldButton.render();
