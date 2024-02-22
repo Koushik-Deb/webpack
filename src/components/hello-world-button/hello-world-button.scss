@@ -4,14 +4,14 @@ $button-font-color: white;
 $text-font-color: red;
 
 .hello-world-button {
-  font-size: $font-size;
-  padding: 7px 15px;
-  background: $button-background-color;
-  color: $button-font-color;
-  outline: none;
+    font-size: $font-size;
+    padding: 7px 15px;
+    background: $button-background-color;
+    color: $button-font-color;
+    outline: none;
 }
 
 .hello-world-text {
-  color: $text-font-color;
-  font-weight: bold;
+    color: $text-font-color;
+    font-weight: bold;
 }

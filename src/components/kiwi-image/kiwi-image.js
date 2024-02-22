@@ -8,8 +8,8 @@ class KiwiImage {
         img.alt = 'Kiwi';
         img.classList.add('kiwi-image');
 
-        const body = document.querySelector('body');
-        body.appendChild(img);
+        const bodyDomElement = document.querySelector('body');
+        bodyDomElement.appendChild(img);
     }
 }
 
