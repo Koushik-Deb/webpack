@@ -43,6 +43,10 @@ module.exports = {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
+      {
+        test: /\.hbs$/,
+        use: ["handlebars-loader"],
+      },
     ],
   },
   plugins: [
@@ -58,9 +62,8 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: "Hello World",
-      meta: {
-        description: "some description",
-      },
+      template: "src/index.hbs",
+      description: "Some New Description",
     }),
   ],
 };
