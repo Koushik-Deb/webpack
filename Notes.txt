@@ -9,3 +9,6 @@ npx webpack --stats detailed
 
 publicPath - Static files path not needed from webpack 5!
 You will still need it, if you take your static files from cdn . 
+
+
+Loaders
