@@ -1,6 +1,14 @@
+import NavigationBar from './components/navigation-bar/navigation-bar';
+
+const naviagationItems = [
+    { name: 'Hello World', url: '/hello-world-page' },
+    { name: 'Kiwi', url: '/kiwi-page' }
+];
+
+const navigationBar = new NavigationBar()
+navigationBar.render(naviagationItems);
+
 const url = window.location.pathname;
-
-
 
 if (url === '/hello-world-page') {
     import('HelloWorldApp/HelloWorldPage').then(HelloWorldPageModule => {
