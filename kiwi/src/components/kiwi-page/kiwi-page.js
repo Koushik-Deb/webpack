@@ -7,6 +7,13 @@ class KiwiPage {
         heading.render('kiwi');
         const kiwiImage = new KiwiImage();
         kiwiImage.render();
+
+        import('ImageCaptionApp/ImageCaption').then(module => {
+            const imageCaption = module.default;
+            const imagecaption = new imageCaption();
+            imagecaption.render('kiwi');
+        });
+
     }
 }
 
