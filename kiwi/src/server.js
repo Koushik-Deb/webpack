@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/static', express.static(path.resolve(__dirname, '../dist')));
+app.use('/', express.static(path.resolve(__dirname, '../dist')));
 
 app.listen(PORT, () => {
     console.log(`App is listening on ${PORT}`);
