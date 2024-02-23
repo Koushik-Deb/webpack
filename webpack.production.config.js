@@ -2,14 +2,13 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
-    entry: './src/hello-world.js',
+    entry: './src/index.js',
     output: {
-        filename: '[name].[contenthash].js',
+        filename: 'bundle.[contenthash].js',
         path: path.resolve(__dirname, './dist'),
-        publicPath: 'http://localhost:9001/'
+        publicPath: '/static/'
     },
     mode: 'production',
     optimization: {
@@ -22,6 +21,25 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(png|jpg)$/,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 3 * 1024
+                    }
+                }
+            },
+            {
+                test: /\.txt/,
+                type: 'asset/source'
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader, 'css-loader'
+                ]
+            },
+            {
                 test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
@@ -33,8 +51,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/env'],
-                        plugins: ['@babel/plugin-proposal-class-properties']
+                        presets: [ '@babel/env' ],
+                        plugins: [ '@babel/plugin-proposal-class-properties' ]
                     }
                 }
             },
@@ -48,22 +66,13 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
+            filename: 'styles.[contenthash].css'
         }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            filename: 'hello-world.html',
             title: 'Hello world',
             description: 'Hello world',
             template: 'src/page-template.hbs'
-        }),
-        new ModuleFederationPlugin({
-            name: 'HelloWorldApp',
-            filename: 'remoteEntry.js',
-            exposes: {
-                './HelloWorldButton': './src/components/hello-world-button/hello-world-button.js',
-                './HelloWorldPage': './src/components/hello-world-page/hello-world-page.js'
-            }
         })
     ]
 };

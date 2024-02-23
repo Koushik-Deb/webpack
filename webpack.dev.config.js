@@ -1,28 +1,46 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
-    entry: './src/image-caption.js',
+    entry: './src/index.js',
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, './dist'),
-        publicPath: 'http://localhost:9003/'
+        publicPath: ''
     },
     mode: 'development',
     devServer: {
-        port: 9003,
+        port: 9000,
         static: {
             directory: path.resolve(__dirname, './dist'),
         },
         devMiddleware: {
-            index: 'image-caption.html',
+            index: 'index.html',
             writeToDisk: true
         }
     },
     module: {
         rules: [
+            {
+                test: /\.(png|jpg)$/,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 3 * 1024
+                    }
+                }
+            },
+            {
+                test: /\.txt/,
+                type: 'asset/source'
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader', 'css-loader'
+                ]
+            },
             {
                 test: /\.scss$/,
                 use: [
@@ -35,7 +53,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/env'],
+                        presets: [ '@babel/env' ],
+                        plugins: [ '@babel/plugin-proposal-class-properties' ]
                     }
                 }
             },
@@ -50,18 +69,9 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            filename: 'image-caption.html',
-            title: 'Image Caption',
-            description: 'Image Caption',
+            title: 'Hello world',
+            description: 'Hello world',
             template: 'src/page-template.hbs'
-        }),
-        new ModuleFederationPlugin({
-            name: 'ImageCaptionApp',
-            filename: 'remoteEntry.js',
-            exposes: {
-                './ImageCaption': './src/components/image-caption/image-caption.js',
-
-            }
         })
     ]
 };

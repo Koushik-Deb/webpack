@@ -6,3 +6,5 @@
 /kiwi/dist
 /dashboard/dist
 /image-caption/dist
+
+/node_modules
