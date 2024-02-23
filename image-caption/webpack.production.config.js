@@ -60,7 +60,7 @@ module.exports = {
             name: 'ImageCaptionApp',
             filename: 'remoteEntry.js',
             exposes: {
-                './image-caption': './src/components/image-caption/image-caption.js'
+                './ImageCaption': './src/components/image-caption/image-caption.js'
             }
         })
     ]
