@@ -1,5 +1,8 @@
 /hello-world/node_modules
 /kiwi/node_modules
 /dashboard/node_modules
+/image-caption/node_modules
 /hello-world/dist
 /kiwi/dist
+/dashboard/dist
+/image-caption/dist
